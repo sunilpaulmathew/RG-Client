@@ -102,8 +102,7 @@ public class ResearchGateFragment extends Fragment {
         });
 
         mWebView.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
-            DownloadManager.Request request = new DownloadManager.Request(
-                    Uri.parse(url));
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
             request.setMimeType(mimeType);
             String cookies = CookieManager.getInstance().getCookie(url);
             request.addRequestHeader("cookie", cookies);
@@ -149,10 +148,10 @@ public class ResearchGateFragment extends Fragment {
                         reloadPage("https://www.researchgate.net/search/");
                         break;
                     case 1:
-                        reloadPage("https://www.researchgate.net/jobs/");
+                        reloadPage("https://www.researchgate.net/topics/");
                         break;
                     case 2:
-                        reloadPage("https://www.researchgate.net/topics/");
+                        reloadPage("https://www.researchgate.net/jobs/");
                         break;
                 }
                 return false;
