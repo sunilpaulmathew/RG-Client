@@ -1,0 +1,27 @@
+<LinearLayout
+    android:id="@+id/no_network_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_gravity="start"
+    android:visibility="gone"
+    android:gravity="center"
+    android:padding="15dp" >
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_network_off"
+        android:layout_marginEnd="10dp"
+        android:background="@null" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/network_unavailable"
+        android:gravity="center_vertical"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+</LinearLayout>

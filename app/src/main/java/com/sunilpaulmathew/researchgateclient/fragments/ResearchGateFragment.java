@@ -55,6 +55,7 @@ public class ResearchGateFragment extends Fragment {
         AppCompatImageButton mAdd = mRootView.findViewById(R.id.add_button);
         AppCompatImageView mSplashImage = mRootView.findViewById(R.id.splash_image);
         FrameLayout mMenuLayout = mRootView.findViewById(R.id.menu_layout);
+        LinearLayout mNetworkError = mRootView.findViewById(R.id.no_network_layout);
         LinearLayout mHome = mRootView.findViewById(R.id.home_button);
         LinearLayout mMore = mRootView.findViewById(R.id.more_button);
         LinearLayout mNotifications = mRootView.findViewById(R.id.notifications_button);
@@ -65,6 +66,11 @@ public class ResearchGateFragment extends Fragment {
         mSplashImage.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
 
         mSplashScreen.setVisibility(View.VISIBLE);
+        if (Utils.isNetworkAvailable(requireActivity())) {
+            mSwipeRefreshLayout.setVisibility(View.VISIBLE);
+        } else {
+            mNetworkError.setVisibility(View.VISIBLE);
+        }
 
         WebSettings mWebSettings = mWebView.getSettings();
         mWebSettings.setDomStorageEnabled(true);
@@ -76,8 +82,8 @@ public class ResearchGateFragment extends Fragment {
         mWebView.setWebViewClient(new WebViewClient() {
             public void onPageFinished(WebView view, String url) {
                 mSplashScreen.setVisibility(View.GONE);
-                mMenuLayout.setVisibility(View.VISIBLE);
-                mAdd.setVisibility(View.VISIBLE);
+                mMenuLayout.setVisibility(Utils.isNetworkAvailable(requireActivity()) ? View.VISIBLE : View.GONE);
+                mAdd.setVisibility(Utils.isNetworkAvailable(requireActivity()) ? View.VISIBLE : View.GONE);
                 mWebView.loadUrl("javascript:(function() { " + "document.getElementsByClassName('header-logged-in__logo')[0].style.display='none'; })()");
             }
             public boolean shouldOverrideUrlLoading(WebView view, String url) {

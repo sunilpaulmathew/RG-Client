@@ -5,6 +5,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.preference.PreferenceManager;
@@ -36,17 +37,10 @@ public class Utils {
         }
     }
 
-    public static String getString(String name, String defaults, Context context) {
-        return PreferenceManager.getDefaultSharedPreferences(context).getString(name, defaults);
-    }
-
-    public static void saveString(String name, String value, Context context) {
-        PreferenceManager.getDefaultSharedPreferences(context).edit().putString(name, value).apply();
-    }
-
-    public static int getOrientation(Activity activity) {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && activity.isInMultiWindowMode() ?
-                Configuration.ORIENTATION_PORTRAIT : activity.getResources().getConfiguration().orientation;
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        assert cm != null;
+        return (cm.getActiveNetworkInfo() != null) && cm.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
     public static void showSnackbar(View view, String message) {
@@ -64,13 +58,17 @@ public class Utils {
         activity.finish();
     }
 
-    public static void launchURL(String url, Activity activity) {
-        try {
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(url));
-            activity.startActivity(i);
-        } catch (ActivityNotFoundException e) {
-            e.printStackTrace();
+    public static void launchURL(View view, String url, Activity activity) {
+        if (Utils.isNetworkAvailable(activity)) {
+            try {
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                activity.startActivity(i);
+            } catch (ActivityNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            Utils.showSnackbar(view, activity.getString(R.string.network_unavailable));
         }
     }
 

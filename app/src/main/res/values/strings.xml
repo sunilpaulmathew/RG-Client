@@ -13,6 +13,7 @@
     <string name="invite_friends_Summary">Invite your friends to try ResearchGate-Client</string>
     <string name="messages">Messages</string>
     <string name="more">More</string>
+    <string name="network_unavailable">Failed to connect to the internet!</string>
     <string name="notifications">Notifications</string>
     <string name="press_back">Press back again to exit</string>
     <string name="publish_project">Publish Project</string>

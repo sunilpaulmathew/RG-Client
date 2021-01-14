@@ -87,6 +87,10 @@ public class SettingsActivity extends AppCompatActivity {
             if (position == 0) {
                 Utils.goToSettings(this);
             } else if (position == 1) {
+                if (!Utils.isNetworkAvailable(this)) {
+                    Utils.showSnackbar(findViewById(android.R.id.content), getString(R.string.network_unavailable));
+                    return;
+                }
                 mWebView.loadUrl("https://www.researchgate.net/account.AccountSettings.html");
                 mSplashScreen.setVisibility(View.VISIBLE);
                 mWebView.setWebViewClient(new WebViewClient() {
@@ -96,6 +100,10 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 });
             } else if (position == 2) {
+                if (!Utils.isNetworkAvailable(this)) {
+                    Utils.showSnackbar(findViewById(android.R.id.content), getString(R.string.network_unavailable));
+                    return;
+                }
                 mWebView.loadUrl("https://www.researchgate.net/account.ProfileSettings.html");
                 mSplashScreen.setVisibility(View.VISIBLE);
                 mWebView.setWebViewClient(new WebViewClient() {
@@ -105,7 +113,7 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 });
             } else if (position == 3) {
-                Utils.launchURL("https://smartpack.github.io/donation/", this);
+                Utils.launchURL(findViewById(android.R.id.content), "https://smartpack.github.io/donation/", this);
             } else if (position == 4) {
                 Intent share_app = new Intent();
                 share_app.setAction(Intent.ACTION_SEND);
@@ -115,11 +123,11 @@ public class SettingsActivity extends AppCompatActivity {
                 Intent shareIntent = Intent.createChooser(share_app, getString(R.string.share_with));
                 startActivity(shareIntent);
             } else if (position == 5) {
-                Utils.launchURL("https://github.com/sunilpaulmathew/RG-Client/", this);
+                Utils.launchURL(findViewById(android.R.id.content), "https://github.com/sunilpaulmathew/RG-Client/", this);
             } else if (position == 6) {
-                Utils.launchURL("https://play.google.com/store/apps/details?id=com.sunilpaulmathew.researchgateclient/", this);
+                Utils.launchURL(findViewById(android.R.id.content), "https://play.google.com/store/apps/details?id=com.sunilpaulmathew.researchgateclient/", this);
             } else if (position == 7) {
-                Utils.launchURL("https://github.com/sunilpaulmathew/RG-Client/blob/master/app/src/main/res/values/strings.xml", this);
+                Utils.launchURL(findViewById(android.R.id.content), "https://github.com/sunilpaulmathew/RG-Client/blob/master/app/src/main/res/values/strings.xml", this);
             }
         });
 
