@@ -62,7 +62,9 @@ public class SettingsActivity extends AppCompatActivity {
         WebView mWebView = findViewById(R.id.webview);
         mSwipeRefreshLayout = findViewById(R.id.swipe_layout);
 
-        mAppTitle.setText(getString(R.string.app_name) + " " + BuildConfig.VERSION_NAME);
+        boolean isProUser = Utils.getBoolean("support_received", false, this) || Utils.isDonated(this);
+
+        mAppTitle.setText(getString(R.string.app_name) + (isProUser ? " Pro " : " ") + BuildConfig.VERSION_NAME);
         mAppTitle.setTextColor(Utils.isDarkTheme(this) ? Color.WHITE : Color.BLACK);
         mAppDescription.setText(BuildConfig.APPLICATION_ID);
         mSplashImage.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
@@ -113,7 +115,8 @@ public class SettingsActivity extends AppCompatActivity {
                     }
                 });
             } else if (position == 3) {
-                Utils.launchURL(findViewById(android.R.id.content), "https://smartpack.github.io/donation/", this);
+                Intent donations = new Intent(this, BillingActivity.class);
+                startActivity(donations);
             } else if (position == 4) {
                 Intent share_app = new Intent();
                 share_app.setAction(Intent.ACTION_SEND);
