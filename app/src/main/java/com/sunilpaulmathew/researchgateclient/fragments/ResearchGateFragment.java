@@ -75,6 +75,7 @@ public class ResearchGateFragment extends Fragment {
         WebSettings mWebSettings = mWebView.getSettings();
         mWebSettings.setDomStorageEnabled(true);
         mWebSettings.setJavaScriptEnabled(true);
+        mWebSettings.setBuiltInZoomControls(true);
         mWebSettings.setPluginState(WebSettings.PluginState.ON);
 
         mWebView.setWebViewClient(new WebViewClient());
