@@ -7,6 +7,7 @@
     <string name="cancel">Cancel</string>
     <string name="donation_app">Buy Donation App</string>
     <string name="dismiss">Dismiss</string>
+    <string name="download">Download</string>
     <string name="downloading">Downloading…</string>
     <string name="home">Home</string>
     <string name="jobs">Jobs</string>
@@ -27,6 +28,7 @@
     <string name="settings_account">Account Settings</string>
     <string name="settings_profile">Profile Settings</string>
     <string name="shared_by_message">Get ResearchGate-Client %s, an unofficial web-based application built around the official https://www.researchgate.net/, from PlayStore: https://play.google.com/store/apps/details?id=com.sunilpaulmathew.researchgateclient</string>
+    <string name="share_link">Share Link</string>
     <string name="share_with">Share With</string>
     <string name="source_code">Source Code</string>
     <string name="source_code_summary">ResearchGate-Client is an open-source application which is ready to accept contributions from the development community. Click here to check out the source code!</string>

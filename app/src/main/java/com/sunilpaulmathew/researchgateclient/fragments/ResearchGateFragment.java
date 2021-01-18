@@ -31,9 +31,13 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.sunilpaulmathew.researchgateclient.BuildConfig;
 import com.sunilpaulmathew.researchgateclient.R;
 import com.sunilpaulmathew.researchgateclient.activities.SettingsActivity;
 import com.sunilpaulmathew.researchgateclient.utils.Utils;
+
+import java.net.URI;
 
 /*
  * Created by sunilpaulmathew <sunil.kde@gmail.com> on January 12, 2021
@@ -109,20 +113,37 @@ public class ResearchGateFragment extends Fragment {
         });
 
         mWebView.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
-            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-            request.setMimeType(mimeType);
-            String cookies = CookieManager.getInstance().getCookie(url);
-            request.addRequestHeader("cookie", cookies);
-            request.addRequestHeader("User-Agent", userAgent);
-            request.setDescription(getString(R.string.downloading));
-            request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType));
-            request.allowScanningByMediaScanner();
-            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-            request.setDestinationInExternalPublicDir(
-                    Environment.DIRECTORY_DOWNLOADS, URLUtil.guessFileName(
-                            url, contentDisposition, mimeType));
-            DownloadManager dm = (DownloadManager) requireActivity().getSystemService(Context.DOWNLOAD_SERVICE);
-            dm.enqueue(request);
+            new MaterialAlertDialogBuilder(requireActivity()).setItems(getResources().getStringArray(
+                    R.array.options), (dialogInterface, i) -> {
+                switch (i) {
+                    case 0:
+                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                        request.setMimeType(mimeType);
+                        String cookies = CookieManager.getInstance().getCookie(url);
+                        request.addRequestHeader("cookie", cookies);
+                        request.addRequestHeader("User-Agent", userAgent);
+                        request.setDescription(getString(R.string.downloading));
+                        request.setTitle(URLUtil.guessFileName(url, contentDisposition, mimeType));
+                        request.allowScanningByMediaScanner();
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                        request.setDestinationInExternalPublicDir(
+                                Environment.DIRECTORY_DOWNLOADS, URLUtil.guessFileName(
+                                        url, contentDisposition, mimeType));
+                        DownloadManager dm = (DownloadManager) requireActivity().getSystemService(Context.DOWNLOAD_SERVICE);
+                        dm.enqueue(request);
+                        break;
+                    case 1:
+                        Intent share_link = new Intent();
+                        share_link.setAction(Intent.ACTION_SEND);
+                        share_link.putExtra(Intent.EXTRA_SUBJECT, mWebView.getTitle());
+                        share_link.putExtra(Intent.EXTRA_TEXT, url + "\n\n" + getString(R.string.shared_by_message, BuildConfig.VERSION_NAME));
+                        share_link.setType("text/plain");
+                        Intent shareIntent = Intent.createChooser(share_link, getString(R.string.share_with));
+                        startActivity(shareIntent);
+                        break;
+                }
+            }).setOnDismissListener(dialogInterface -> {
+            }).show();
         });
 
         mWebView.loadUrl("https://www.researchgate.net/");
