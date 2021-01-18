@@ -2,7 +2,17 @@
 
 ![](app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
 
-### ResearchGate-Client: An unofficial web-based application built around the official https://www.researchgate.net/!
+[![](https://img.shields.io/badge/ResearchGate--Client-v0.3-green)](https://play.google.com/store/apps/details?id=com.sunilpaulmathew.researchgateclient)
+![](https://img.shields.io/github/languages/top/sunilpaulmathew/RG-Client)
+![](https://img.shields.io/github/contributors/sunilpaulmathew/RG-Client)
+![](https://img.shields.io/github/license/sunilpaulmathew/RG-Client)
+
+### ResearchGate-Client: An unofficial web-based application built around the official https://www.researchgate.net/
+
+## Download
+[<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
+     alt=""
+     height="80">](https://play.google.com/store/apps/details?id=com.sunilpaulmathew.researchgateclient)
 
 ## Features
 * Easily and efficiently manage your https://www.researchgate.net/ account.
