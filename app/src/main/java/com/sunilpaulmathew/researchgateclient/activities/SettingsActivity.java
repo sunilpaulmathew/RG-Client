@@ -128,7 +128,7 @@ public class SettingsActivity extends AppCompatActivity {
             } else if (position == 5) {
                 Utils.launchURL(findViewById(android.R.id.content), "https://github.com/sunilpaulmathew/RG-Client/", this);
             } else if (position == 6) {
-                Utils.launchURL(findViewById(android.R.id.content), "https://play.google.com/store/apps/details?id=com.sunilpaulmathew.researchgateclient/", this);
+                Utils.launchURL(findViewById(android.R.id.content), "https://play.google.com/store/apps/details?id=com.sunilpaulmathew.researchgateclient", this);
             } else if (position == 7) {
                 Utils.launchURL(findViewById(android.R.id.content), "https://github.com/sunilpaulmathew/RG-Client/blob/master/app/src/main/res/values/strings.xml", this);
             }
