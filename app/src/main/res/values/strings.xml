@@ -45,6 +45,6 @@
     <string name="support_status_message">Thank you very much for your support!</string>
     <string name="questions">Questions</string>
     <string name="translations">Translations</string>
-    <string name="translations_summary">Help me to translate this app! Click here to get the original language strings in english.</string>
+    <string name="translations_summary">Help me to translate this app! Click here to visit POEditor localization project!</string>
     <string name="updates">Updates</string>
 </resources>
