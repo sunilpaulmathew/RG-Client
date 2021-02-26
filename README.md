@@ -2,7 +2,7 @@
 
 ![](app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
 
-[![](https://img.shields.io/badge/ResearchGate--Client-v0.3-green)](https://play.google.com/store/apps/details?id=com.sunilpaulmathew.researchgateclient)
+[![](https://img.shields.io/badge/ResearchGate--Client-v0.5-green)](https://play.google.com/store/apps/details?id=com.sunilpaulmathew.researchgateclient)
 ![](https://img.shields.io/github/languages/top/sunilpaulmathew/RG-Client)
 ![](https://img.shields.io/github/contributors/sunilpaulmathew/RG-Client)
 ![](https://img.shields.io/github/license/sunilpaulmathew/RG-Client)
@@ -20,6 +20,17 @@
 * No personal or private information about the users is collected.
 * No Ads or trackers included.
 * A lot more.
+
+## Translations
+Please help me to translate this app using POEditor localization service
+>     https://poeditor.com/join/project?hash=kJ4jzh31VK
+
+## Credits
+* [ResearchGate](https://www.researchgate.net/)
+
+## Report a bug or request a feature
+You can report a bug or request a feature by opening an issue at
+>     https://github.com/sunilpaulmathew/RG-Client/issues/new
 
 ## License
 
